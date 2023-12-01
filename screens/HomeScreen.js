@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, TextInput, Button, Text, Image, StyleSheet } from 'react-native';
+import homeStyles from "../styles/homeStyles";
 
 class HomeScreen extends Component {
     // Code adapted from https://github.com/kevinjfaucher/Pokemon/blob/main/app.js
@@ -41,16 +42,16 @@ class HomeScreen extends Component {
 
         return (
 
-            <View style={styles.container}>
+            <View style={homeStyles.container}>
                 <View>
                     <Text>Welcome to the Home Page!</Text>
                     <Button title="Go to List" onPress={() => this.props.navigation.navigate('Pokemon List')} />
                 </View>
-                <Text style={styles.title}>PokéApp</Text>
+                <Text style={homeStyles.title}>PokéApp</Text>
 
                 {/* Text input for entering Pokémon name */}
                 <TextInput
-                    style={styles.input}
+                    style={homeStyles.input}
                     value={pokemonName}
                     onChangeText={this.handleInputChange}
                     placeholder="Enter Pokémon name"
@@ -60,13 +61,13 @@ class HomeScreen extends Component {
                 <Button title="Get Pokémon" onPress={this.fetchPokemonData} />
 
                 {/* Display error message if there's any */}
-                {error && <Text style={styles.error}>{error}</Text>}
+                {error && <Text style={homeStyles.error}>{error}</Text>}
 
                 {/* Display Pokémon data if available */}
                 {pokemonData && (
-                    <View style={styles.pokemonData}>
-                        <Image source={{ uri: pokemonData.sprites.front_default }} style={styles.image} />
-                        <Text style={styles.name}>{pokemonData.name}</Text>
+                    <View style={homeStyles.pokemonData}>
+                        <Image source={{ uri: pokemonData.sprites.front_default }} style={homeStyles.image} />
+                        <Text style={homeStyles.name}>{pokemonData.name}</Text>
                         <Text>Height: {pokemonData.height}</Text>
                         <Text>Weight: {pokemonData.weight}</Text>
                         <Text>Type: {pokemonData.types[0].type.name}</Text>
@@ -76,43 +77,4 @@ class HomeScreen extends Component {
         );
     }
 }
-
-// Styling for the components
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    title: {
-        fontSize: 24,
-        marginBottom: 20,
-    },
-    input: {
-        borderWidth: 1,
-        borderColor: '#ccc',
-        padding: 10,
-        width: '80%',
-        marginBottom: 20,
-    },
-    error: {
-        color: 'red',
-        marginBottom: 20,
-    },
-    pokemonData: {
-        alignItems: 'center',
-        marginTop: 20,
-    },
-    image: {
-        width: 100,
-        height: 100,
-        marginBottom: 20,
-    },
-    name: {
-        fontSize: 20,
-        marginBottom: 10,
-    }
-});
-
 export default HomeScreen;
