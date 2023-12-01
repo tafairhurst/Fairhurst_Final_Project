@@ -72,6 +72,7 @@ class HomeScreen extends Component {
                         <Text>Weight: {pokemonData.weight}</Text>
                         <Text>Type: {pokemonData.types[0].type.name}</Text>
                     </View>
+
                 )}
             </View>
         );

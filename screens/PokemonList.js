@@ -1,6 +1,6 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState, useCallback, useEffect } from "react";
-import {StyleSheet, Text, View, FlatList, Image, Button} from "react-native";
+import {Text, View, FlatList, Image, Button} from "react-native";
+import { useNavigation } from '@react-navigation/native';
 import styles from '../styles/styles.js';
 
 const pokePath = "https://pokeapi.co/api/v2/";
@@ -10,7 +10,7 @@ const firstGenPokemonPath = `${pokePath}${pokeQuery}`;
 //1 Call Pokemon IDs --> 151 = 152 Calls to the API
 
 export default function PokemonList() {
-
+    const navigation = useNavigation();
     const [firstGenPokemonDetails, setFirstGenPokemonDetails] = useState([]);
 
     // Code adapted from tutorial https://www.youtube.com/watch?v=lz2tqVkPSsU
@@ -34,6 +34,7 @@ export default function PokemonList() {
     }, []);
 
     const renderPokemon = ({ item }) => {
+
         return (
             <View style={styles.pokemonContainer}>
                 <Text style={styles.pokemonTitle}>
@@ -46,9 +47,9 @@ export default function PokemonList() {
                     }}
                 />
                 <Button
-                    title={item.name}
-                    // Navigate to PokemonDetails screen when a pokemon is clicked.
-                    onPress={() => this.props.navigation.navigate('PokemonDetails', { pokemon: item })}
+                    title="details"
+                    // Navigate to PokemonDetails screen when the button is clicked.
+                    onPress={() => navigation.navigate('Pokemon Details', { pokemon: item })}
                 />
             </View>
         );

@@ -11,7 +11,7 @@ export default class App extends Component {
     render () {
         return (
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="Home">
+                <Stack.Navigator initialRouteName="PokemonList">
                     <Stack.Screen name="Pokemon Search" component={HomeScreen}/>
                     <Stack.Screen name="Pokemon List" component={PokemonList}/>
                     <Stack.Screen name="Pokemon Details" component={PokemonDetails}/>
