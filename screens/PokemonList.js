@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useCallback, useEffect } from "react";
-import { StyleSheet, Text, View, FlatList, Image } from "react-native";
+import {StyleSheet, Text, View, FlatList, Image, Button} from "react-native";
 import styles from '../styles/styles.js';
 
 const pokePath = "https://pokeapi.co/api/v2/";
@@ -44,6 +44,11 @@ export default function PokemonList() {
                     source={{
                         uri: item.sprites.front_default,
                     }}
+                />
+                <Button
+                    title={item.name}
+                    // Navigate to PokemonDetails screen when a pokemon is clicked.
+                    onPress={() => this.props.navigation.navigate('PokemonDetails', { pokemon: item })}
                 />
             </View>
         );

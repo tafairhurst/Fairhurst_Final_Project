@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { View, TextInput, Button, Text, Image, StyleSheet } from 'react-native';
+import { View, Text} from 'react-native';
 import HomeScreen from "./HomeScreen";
 
-class PokemonDetails extends Component {
-// Still need to finish
+export default class PokemonDetails extends Component {
     render() {
+        const { pokemon } = this.props.route.params;
+
         return (
           <View>
-              <Text>Pokemon Details Screen</Text>
+              <Text>{pokemon.name}</Text>
           </View>
         );
     }
 }
-export default PokemonDetails;
